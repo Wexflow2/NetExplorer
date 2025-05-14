@@ -1,0 +1,722 @@
+/* Chrome-inspired styles */
+
+/* Reset and basic styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.chrome-body {
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #202124;
+    color: #e8eaed;
+    height: 100vh;
+    overflow: hidden;
+    padding: 0;
+}
+
+.chrome-window {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #202124;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Header styles */
+.chrome-header {
+    background-color: #292a2d;
+    border-bottom: 1px solid #3e4042;
+}
+
+/* Tab bar */
+.chrome-tabs-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5px;
+    height: 36px;
+    background-color: #202124;
+}
+
+.chrome-tabs {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.chrome-tab {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    height: 32px;
+    min-width: 180px;
+    max-width: 240px;
+    background-color: #292a2d;
+    border-radius: 8px 8px 0 0;
+    margin-right: 2px;
+    font-size: 12px;
+    position: relative;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: all 0.2s ease;
+}
+
+.chrome-tab:hover {
+    background-color: #303134;
+}
+
+.chrome-tab.active {
+    background-color: #35363a;
+}
+
+.chrome-tab-favicon {
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.chrome-tab-favicon img {
+    width: 16px;
+    height: 16px;
+}
+
+.chrome-tab-title {
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    min-width: 0;
+}
+
+.chrome-tab-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    font-size: 10px;
+    color: #9aa0a6;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    flex-shrink: 0;
+}
+
+.chrome-tab:hover .chrome-tab-close {
+    opacity: 1;
+}
+
+.chrome-tab-close:hover {
+    background-color: rgba(232, 234, 237, 0.1);
+    color: #e8eaed;
+}
+
+.chrome-tab-new {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+    color: #9aa0a6;
+    border-radius: 50%;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.chrome-tab-new:hover {
+    background-color: #3c4043;
+    color: #e8eaed;
+}
+
+.chrome-window-controls {
+    display: flex;
+    align-items: center;
+}
+
+.chrome-control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: #9aa0a6;
+    font-size: 12px;
+    border-radius: 50%;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.chrome-control:hover {
+    background-color: #3c4043;
+    color: #e8eaed;
+}
+
+.chrome-control.close:hover {
+    background-color: #c42b1c;
+    color: white;
+}
+
+/* Toolbar */
+.chrome-toolbar {
+    display: flex;
+    align-items: center;
+    height: 46px;
+    padding: 0 8px;
+    background-color: #35363a;
+}
+
+.chrome-nav-controls {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+}
+
+.chrome-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    color: #9aa0a6;
+    margin-right: 2px;
+    cursor: pointer;
+}
+
+.chrome-btn:hover {
+    background-color: #3c4043;
+    color: #e8eaed;
+}
+
+.chrome-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.chrome-url-wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    margin: 0 8px;
+}
+
+.chrome-url-bar {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 36px;
+    background-color: #202124;
+    border-radius: 24px;
+    padding: 0 16px;
+    border: 1px solid #3c4043;
+}
+
+.chrome-url-bar:focus-within {
+    background-color: #202124;
+    border-color: #5f6368;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.site-info {
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+}
+
+.chrome-url-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e8eaed;
+    font-size: 14px;
+    padding: 0;
+}
+
+.chrome-url-actions {
+    display: flex;
+    align-items: center;
+}
+
+.chrome-btn-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    color: #9aa0a6;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.chrome-btn-icon:hover {
+    background-color: #3c4043;
+    color: #e8eaed;
+}
+
+.chrome-toolbar-actions {
+    display: flex;
+    align-items: center;
+    margin-left: 8px;
+}
+
+/* Bookmarks bar */
+.chrome-bookmarks-bar {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding: 0 10px;
+    background-color: #292a2d;
+    border-bottom: 1px solid #3e4042;
+    font-size: 12px;
+}
+
+.chrome-bookmark {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    height: 24px;
+    color: #9aa0a6;
+    border-radius: 4px;
+    margin-right: 8px;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.chrome-bookmark i {
+    margin-right: 4px;
+    font-size: 14px;
+}
+
+.chrome-bookmark:hover {
+    background-color: #3c4043;
+    color: #e8eaed;
+}
+
+.chrome-bookmark.more {
+    color: #9aa0a6;
+    margin-left: auto;
+}
+
+/* Content area */
+.chrome-content {
+    flex: 1;
+    position: relative;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* Tab content container */
+#tab-contents {
+    height: 100%;
+    position: relative;
+}
+
+.tab-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: #fff;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Welcome screen */
+.chrome-welcome {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 120px;
+    height: 100%;
+    background-color: #202124;
+}
+
+.chrome-logo {
+    margin-bottom: 32px;
+}
+
+.chrome-logo img {
+    width: 160px;
+    height: 160px;
+}
+
+.chrome-search-wrapper {
+    width: 100%;
+    max-width: 560px;
+    margin-bottom: 16px;
+}
+
+.chrome-search-form {
+    width: 100%;
+}
+
+.chrome-search-box {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 44px;
+    background-color: #303134;
+    border-radius: 22px;
+    padding: 0 16px;
+    border: 1px solid #5f6368;
+    transition: box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.chrome-search-box:hover, 
+.chrome-search-box:focus-within {
+    background-color: #303134;
+    border-color: #8ab4f8;
+    box-shadow: 0 1px 6px rgba(138, 180, 248, 0.15);
+}
+
+.chrome-search-box i {
+    color: #9aa0a6;
+    margin-right: 12px;
+}
+
+.chrome-search-box input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #e8eaed;
+    font-size: 16px;
+    height: 100%;
+}
+
+.chrome-search-button {
+    background: transparent;
+    border: none;
+    color: #8ab4f8;
+    cursor: pointer;
+    padding: 0 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 28px;
+    width: 28px;
+    border-radius: 50%;
+    margin-left: 8px;
+}
+
+.chrome-search-button:hover {
+    background-color: rgba(138, 180, 248, 0.1);
+}
+
+.chrome-shortcuts {
+    margin-top: 24px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.shortcut-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.chrome-shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 112px;
+    cursor: pointer;
+}
+
+.shortcut-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #3c4043;
+    margin-bottom: 8px;
+    font-size: 20px;
+}
+
+.shortcut-icon.google {
+    color: #4285F4;
+}
+
+.shortcut-icon.youtube {
+    color: #FF0000;
+}
+
+.shortcut-icon.wikipedia {
+    color: #FFFFFF;
+}
+
+.shortcut-icon.github {
+    color: #6cc644;
+}
+
+.shortcut-icon.twitter {
+    color: #1DA1F2;
+}
+
+.shortcut-icon.linkedin {
+    color: #0077B5;
+}
+
+.shortcut-icon.reddit {
+    color: #FF4500;
+}
+
+.shortcut-icon.amazon {
+    color: #FF9900;
+}
+
+.chrome-shortcut span {
+    color: #9aa0a6;
+    font-size: 13px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    text-align: center;
+}
+
+.chrome-shortcut:hover .shortcut-icon {
+    background-color: #4d5156;
+}
+
+.chrome-shortcut:hover span {
+    color: #e8eaed;
+}
+
+/* Frame */
+.chrome-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: #fff;
+}
+
+/* Spinner */
+.chrome-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+}
+
+/* Error page styles - retain these */
+.error-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+    background-color: #202124;
+    border-radius: 8px;
+}
+
+.error-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #ea4335;
+}
+
+/* History and Bookmarks Styles */
+.chrome-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chrome-modal-content {
+    width: 90%;
+    max-width: 800px;
+    max-height: 80vh;
+    background-color: #292a2d;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.chrome-modal-header {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #3e4042;
+}
+
+.chrome-modal-header h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #e8eaed;
+}
+
+.chrome-modal-close {
+    background: transparent;
+    border: none;
+    color: #9aa0a6;
+    font-size: 20px;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chrome-modal-close:hover {
+    background-color: #3c4043;
+    color: #e8eaed;
+}
+
+.chrome-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px;
+}
+
+/* History items */
+.chrome-history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.empty-history {
+    text-align: center;
+    padding: 32px;
+    color: #9aa0a6;
+    font-size: 14px;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 8px;
+    background-color: #35363a;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.history-item:hover {
+    background-color: #3c4043;
+}
+
+.history-icon {
+    width: 36px;
+    height: 36px;
+    background-color: #202124;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.history-icon i {
+    color: #8ab4f8;
+    font-size: 16px;
+}
+
+.history-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.history-title {
+    font-size: 14px;
+    color: #e8eaed;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-url {
+    font-size: 12px;
+    color: #9aa0a6;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.history-time {
+    font-size: 11px;
+    color: #5f6368;
+}
+
+/* Bookmark styles */
+.bookmark-icon {
+    width: 16px;
+    height: 16px;
+    margin-right: 6px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    .chrome-tab {
+        min-width: 100px;
+        max-width: 180px;
+    }
+    
+    .chrome-logo img {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .chrome-search-wrapper {
+        max-width: 90%;
+    }
+    
+    .shortcut-row {
+        gap: 8px;
+    }
+    
+    .chrome-shortcut {
+        width: 80px;
+    }
+    
+    .chrome-modal-content {
+        width: 95%;
+        max-height: 90vh;
+    }
+}

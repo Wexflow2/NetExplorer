@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Net-Ex Web Proxy</title>
+    
+    <!-- Bootstrap CSS (Replit theme) -->
+    <link href="https://cdn.replit.com/agent/bootstrap-agent-dark-theme.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+</head>
+<body class="bg-dark chrome-body">
+    <div class="chrome-window">
+        <!-- Browser chrome UI -->
+        <div class="chrome-header">
+            <!-- Top row with tabs, window controls -->
+            <div class="chrome-tabs-bar">
+                <div class="chrome-tabs" id="chrome-tabs">
+                    <div class="chrome-tab active" data-tab-id="tab-1">
+                        <div class="chrome-tab-favicon">
+                            <img src="{{ url_for('static', filename='images/net-ex-logo.svg') }}" alt="Net-Ex Logo">
+                        </div>
+                        <div class="chrome-tab-title">Net-Ex Proxy</div>
+                        <div class="chrome-tab-close">
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div>
+                    <div class="chrome-tab-new" id="new-tab-button">
+                        <i class="fas fa-plus"></i>
+                    </div>
+                </div>
+                <div class="chrome-window-controls">
+                    <button class="chrome-control minimize">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button class="chrome-control maximize">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                    <button class="chrome-control close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Navigation and URL bar -->
+            <div class="chrome-toolbar">
+                <div class="chrome-nav-controls">
+                    <button id="back-button" class="chrome-btn" title="Go back" disabled>
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                    <button id="forward-button" class="chrome-btn" title="Go forward" disabled>
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+                    <button id="refresh-button" class="chrome-btn" title="Refresh">
+                        <i class="fas fa-sync-alt"></i>
+                    </button>
+                    <button id="home-button" class="chrome-btn" title="Home">
+                        <i class="fas fa-home"></i>
+                    </button>
+                </div>
+                
+                <form id="url-form" class="chrome-url-wrapper">
+                    <div class="chrome-url-bar">
+                        <div class="site-info">
+                            <i class="fas fa-lock text-success"></i>
+                        </div>
+                        <input type="text" id="url-input" class="chrome-url-input" 
+                               placeholder="Search Google or enter a URL" autocomplete="off">
+                        <div class="chrome-url-actions">
+                            <button type="button" id="search-button" class="chrome-btn-icon" title="Search">
+                                <i class="fas fa-search"></i>
+                            </button>
+                            <button type="button" class="chrome-btn-icon" title="Bookmark">
+                                <i class="far fa-star"></i>
+                            </button>
+                            <button id="go-button" type="submit" class="chrome-btn-icon" title="Go">
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+                
+                <div class="chrome-toolbar-actions">
+                    <button class="chrome-btn-icon" title="Extensions">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </button>
+                    <button class="chrome-btn-icon" title="Profile">
+                        <i class="fas fa-user-circle"></i>
+                    </button>
+                    <button class="chrome-btn-icon" title="More options">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Bookmarks bar -->
+            <div class="chrome-bookmarks-bar">
+                <div class="chrome-bookmark">
+                    <i class="fab fa-google"></i>
+                    <span>Google</span>
+                </div>
+                <div class="chrome-bookmark">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
+                </div>
+                <div class="chrome-bookmark">
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </div>
+                <div class="chrome-bookmark">
+                    <i class="fab fa-wikipedia-w"></i>
+                    <span>Wikipedia</span>
+                </div>
+                <div class="chrome-bookmark more">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Proxy content area -->
+        <div class="chrome-content">
+            <!-- Tab contents container -->
+            <div id="tab-contents">
+                <!-- Tab 1 content -->
+                <div class="tab-content active" data-tab-content-id="tab-1">
+                    <!-- If no URL is entered yet, show a welcome screen -->
+                    <div class="welcome-screen chrome-welcome">
+                        <div class="chrome-logo">
+                            <img src="{{ url_for('static', filename='images/net-ex-logo.svg') }}" alt="Net-Ex Logo">
+                        </div>
+                        <div class="chrome-search-wrapper">
+                            <form class="chrome-search-form" action="/search" method="get">
+                                <div class="chrome-search-box">
+                                    <i class="fas fa-search"></i>
+                                    <input type="text" name="q" placeholder="Search Google or type a URL" 
+                                           onclick="this.select()" autofocus>
+                                    <button type="submit" class="chrome-search-button">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="chrome-shortcuts">
+                            <div class="shortcut-row">
+                                <div class="chrome-shortcut" data-url="google.com">
+                                    <div class="shortcut-icon google">
+                                        <i class="fab fa-google"></i>
+                                    </div>
+                                    <span>Google</span>
+                                </div>
+                                <div class="chrome-shortcut" data-url="youtube.com">
+                                    <div class="shortcut-icon youtube">
+                                        <i class="fab fa-youtube"></i>
+                                    </div>
+                                    <span>YouTube</span>
+                                </div>
+                                <div class="chrome-shortcut" data-url="wikipedia.org">
+                                    <div class="shortcut-icon wikipedia">
+                                        <i class="fab fa-wikipedia-w"></i>
+                                    </div>
+                                    <span>Wikipedia</span>
+                                </div>
+                                <div class="chrome-shortcut" data-url="github.com">
+                                    <div class="shortcut-icon github">
+                                        <i class="fab fa-github"></i>
+                                    </div>
+                                    <span>GitHub</span>
+                                </div>
+                            </div>
+                            <div class="shortcut-row mt-4">
+                                <div class="chrome-shortcut" data-url="twitter.com">
+                                    <div class="shortcut-icon twitter">
+                                        <i class="fab fa-twitter"></i>
+                                    </div>
+                                    <span>Twitter</span>
+                                </div>
+                                <div class="chrome-shortcut" data-url="linkedin.com">
+                                    <div class="shortcut-icon linkedin">
+                                        <i class="fab fa-linkedin"></i>
+                                    </div>
+                                    <span>LinkedIn</span>
+                                </div>
+                                <div class="chrome-shortcut" data-url="reddit.com">
+                                    <div class="shortcut-icon reddit">
+                                        <i class="fab fa-reddit"></i>
+                                    </div>
+                                    <span>Reddit</span>
+                                </div>
+                                <div class="chrome-shortcut" data-url="amazon.com">
+                                    <div class="shortcut-icon amazon">
+                                        <i class="fab fa-amazon"></i>
+                                    </div>
+                                    <span>Amazon</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Proxy iframe that will display the requested site -->
+                    <iframe class="chrome-frame proxy-frame d-none" src=""></iframe>
+                </div>
+            </div>
+            
+            <!-- Loading spinner -->
+            <div id="loading-spinner" class="chrome-spinner d-none">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Bootstrap JavaScript Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    
+    <script>
+        // Hide welcome screen and show iframe when a URL is loaded
+        document.getElementById('url-form').addEventListener('submit', function(e) {
+            document.getElementById('welcome-screen').classList.add('d-none');
+            document.getElementById('proxy-frame').classList.remove('d-none');
+        });
+        
+        // Chrome-specific UI interactions
+        document.querySelectorAll('.chrome-bookmark').forEach(bookmark => {
+            bookmark.addEventListener('click', function() {
+                const siteName = this.querySelector('span').textContent.toLowerCase();
+                document.getElementById('url-input').value = siteName + '.com';
+                document.getElementById('go-button').click();
+            });
+        });
+    </script>
+</body>
+</html>
